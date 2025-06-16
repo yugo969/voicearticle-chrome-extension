@@ -1,7 +1,6 @@
 // Declare chrome as any to bypass TypeScript errors when @types/chrome is not available
 // This is typically handled better by installing @types/chrome (which is in package.json)
 // and configuring tsconfig.json if you had one. For esbuild, it might pick up types.
-declare var chrome: any;
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { summarizeText, translateText } from './services/geminiService';
