@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoiceArticle</title>
+    <!-- Tailwind CSS for styling -->
+    <link rel="stylesheet" href="dist/output.css" />
+    <style>
+      /* Chrome extension popup dimensions */
+      body {
+        width: 400px; /* Typical popup width */
+        min-height: 300px; /* Minimum height */
+        max-height: 600px; /* Maximum height for scrollability */
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-100 dark:bg-slate-900">
+    <!-- Fallback message for users with JavaScript disabled -->
+    <noscript
+      >このアプリを実行するにはJavaScriptを有効にする必要があります。</noscript
+    >
+    <!-- React app root element -->
+    <div id="root"></div>
+    <!-- Main application script -->
+    <script src="dist/popup.dist.js"></script>
+  </body>
+</html>
