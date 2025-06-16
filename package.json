@@ -1,0 +1,40 @@
+{
+  "name": "voicearticle-chrome-extension",
+  "version": "1.0.1",
+  "description": "VoiceArticle - Chrome extension for reading aloud, summarizing, and translating web page content using Google Gemini AI.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "build:js": "dotenv -e .env.local -- node -e \"const esbuild = require('esbuild'); esbuild.build({ entryPoints: ['popup.tsx'], bundle: true, outfile: 'dist/popup.dist.js', sourcemap: true, minify: true, define: { 'process.env.API_KEY': JSON.stringify(process.env.GEMINI_API_KEY) } }).catch(() => process.exit(1))\"",
+    "build": "npm run build:css && npm run build:js",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "watch:js": "dotenv -e .env.local -- node -e \"const esbuild = require('esbuild'); esbuild.build({ entryPoints: ['popup.tsx'], bundle: true, outfile: 'dist/popup.dist.js', sourcemap: true, watch: true, define: { 'process.env.API_KEY': JSON.stringify(process.env.GEMINI_API_KEY) } }).catch(() => process.exit(1))\"",
+    "dev": "npm run build:css && concurrently \"npm:watch:css\" \"npm:watch:js\""
+  },
+  "keywords": [
+    "chrome-extension",
+    "react",
+    "tailwindcss",
+    "gemini-api",
+    "text-to-speech",
+    "voice-article",
+    "ai-summarization",
+    "translation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^1.5.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "concurrently": "^8.2.2",
+    "dotenv-cli": "^7.4.2",
+    "esbuild": "^0.23.0",
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.5.3"
+  }
+}
